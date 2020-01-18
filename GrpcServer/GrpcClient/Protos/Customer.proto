@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+// The greeting service definition.
+service Customer {
+  // Sends a greeting
+  rpc GetCustomerInfo (CustomerLookupModel) returns (CustomerModel);
+  rpc GetNewCustomers (NewCustomerRequest) returns (stream CustomerModel);
+}
+
+message NewCustomerRequest {
+}
+// The request message containing the user's name.
+message CustomerLookupModel {
+  int32 userId = 1;
+}
+
+// The response message containing the greetings.
+message CustomerModel {
+  string firstNmae = 1;
+  string lastNmae = 2;
+  string emailAddress = 3;
+  bool isAlive = 4;
+  int32 age = 5;
+}
